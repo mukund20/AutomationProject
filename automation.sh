@@ -80,7 +80,7 @@ echo  -e  " \t\t\t\t\e[32m <====================================================
 cat /etc/cron.d/automation
 if [ $? -eq 1 ]; then
        	echo -e "\e[31mAutomation crone file  does not exist.\e[0m"
-	echo -e "\e[32mCreating Now\e[0m"
+	echo -e "\e[32mCreating Now....\e[0m"
 	touch /etc/cron.d/automation
 	echo -e "\e[32mCreated automation file in /etc/cron.d/\e[0m"
 	echo "0 0 * * * root /root/Automation_Project/automation.sh" > /etc/cron.d/automation

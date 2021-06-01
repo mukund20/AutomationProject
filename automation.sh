@@ -56,3 +56,33 @@ cd /var/log/apache2
 tar -cvf /tmp/$myname-httpd-logs-$timestamp.tar access.log error.log
 
 aws s3 cp /tmp/${myname}-httpd-logs-${timestamp}.tar s3://${s3_bucket}/${myname}-httpd-logs-${timestamp}.tar
+
+
+echo  -e  " \t\t\t\t\e[32m <======================================================BOOKKEEPING OF ARCHIEVED FILES=======================================>\e[0m\t"
+
+
+if [ -s /var/www/html/inventory.html ]
+then
+     echo ""
+else
+	awk 'BEGIN{printf "\t\t\t\tLog Type\t\t\tDate Created\t\ttype\t\tSize\n"}' >/var/www/html/inventory.html
+fi
+
+actualsize=$(du -h /tmp/"${myname}-httpd-logs-${timestamp}.tar" | cut -f 1)
+echo -e "\t\t\t\thttpd\t\t\t\t" $timestamp "\ttar\t\t" $actualsize>> /var/www/html/inventory.html
+
+echo -e "\e[33mBookKeeping is present in /var/www/html/inventory.html\e[0m"
+
+
+echo  -e  " \t\t\t\t\e[32m <=====================================================SCRIPT SCHEDULED TO RUN EVERYDAY======================================>\e[0m\t"
+
+cat /etc/cron.d/automation
+if [ $? -eq 1 ]; then
+       	echo -e "\e[31mAutomation crone file  does not exist.\e[0m"
+	echo -e "\e[32mCreating Now\e[0m"
+	touch /etc/cron.d/automation
+	echo -e "\e[32mCreated automation file in /etc/cron.d/\e[0m"
+	echo "0 0 * * * root /root/AutomationProject/automation.sh" > /etc/cron.d/automation
+else
+	echo "0 0 * * * root /root/AutomationProject/automation.sh" > /etc/cron.d/automation
+fi

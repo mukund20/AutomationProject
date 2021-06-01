@@ -83,7 +83,7 @@ if [ $? -eq 1 ]; then
 	echo -e "\e[32mCreating Now\e[0m"
 	touch /etc/cron.d/automation
 	echo -e "\e[32mCreated automation file in /etc/cron.d/\e[0m"
-	echo "0 0 * * * root /root/AutomationProject/automation.sh" > /etc/cron.d/automation
+	echo "0 0 * * * root /root/Automation_Project/automation.sh" > /etc/cron.d/automation
 else
-	echo "0 0 * * * root /root/AutomationProject/automation.sh" > /etc/cron.d/automation
+	echo "0 0 * * * root /root/Automation_Project/automation.sh" > /etc/cron.d/automation
 fi

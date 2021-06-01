@@ -69,7 +69,7 @@ else
 fi
 
 actualsize=$(du -h /tmp/"${myname}-httpd-logs-${timestamp}.tar" | cut -f 1)
-echo -e "\t\t\t\thttpd\t\t\t\t" $timestamp "\ttar\t\t" $actualsize>> /var/www/html/inventory.html
+echo -e "\t\t\t\thttpd-logs\t\t\t" $timestamp "\ttar\t\t" $actualsize>> /var/www/html/inventory.html
 
 echo -e "\e[33mBookKeeping is present in /var/www/html/inventory.html\e[0m"
 

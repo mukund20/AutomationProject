@@ -73,6 +73,7 @@ echo -e "\t\t\t\thttpd-logs\t\t\t" $timestamp "\ttar\t\t" $actualsize>> /var/www
 
 echo -e "\e[33mBookKeeping is present in /var/www/html/inventory.html\e[0m"
 
+cat /var/www/html/inventory.html
 
 echo  -e  " \t\t\t\t\e[32m <=====================================================SCRIPT SCHEDULED TO RUN EVERYDAY======================================>\e[0m\t"
 
